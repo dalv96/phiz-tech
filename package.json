@@ -1,0 +1,26 @@
+{
+  "name": "phiz-tech",
+  "version": "0.0.1",
+  "description": "Сайт физтеха",
+  "main": "main.js",
+  "scripts": {
+    "start" : "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalv96/phiz-tech.git"
+  },
+  "author": "CFU Developer Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalv96/phiz-tech/issues"
+  },
+  "homepage": "https://github.com/dalv96/phiz-tech#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "nconf": "^0.8.4",
+    "pug": "^2.0.0-beta10"
+  }
+}
