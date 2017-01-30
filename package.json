@@ -4,7 +4,7 @@
   "description": "Сайт физтеха",
   "main": "main.js",
   "scripts": {
-    "start" : "node main.js",
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +19,14 @@
   "homepage": "https://github.com/dalv96/phiz-tech#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "connect-mongodb": "^1.1.5",
+    "cookie-session": "^2.0.0-alpha.2",
     "express": "^4.14.1",
+    "express-session": "^1.15.0",
+    "mongodb": "^2.2.22",
+    "mongoose": "^4.8.0",
     "nconf": "^0.8.4",
+    "nodemon": "^1.11.0",
     "pug": "^2.0.0-beta10"
   }
 }

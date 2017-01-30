@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var router = require('./controllers/router');
 var app = express();
+var db = require('./controllers/dbController');
 
 app.set('view engine', 'pug');
 app.set('views', './views');
