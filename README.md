@@ -15,7 +15,7 @@ MongoDB - v3.4.1 (whithout SSL)
 `C:\MongoDB\Server\3.4\bin\mongod.exe --config C:\MongoDB\Server\3.4\bin\mongod.cfg`
 * После чего запускаем ярлык ***mongod.cfg*** и все БД запущена.
 
-*P.S. Не забываем создать папку которую указали в ***mongod.cfg****
+_P.S. Не забываем создать папку которую указали в ***mongod.cfg***_
 
 ## Установка MongoDB для Mac
 * Качаем с [офф сайта](https://www.mongodb.com)
