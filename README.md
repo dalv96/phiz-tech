@@ -1,8 +1,10 @@
 # Cайт для Физико-Технического Института КФУ
 ## Рекомендуемые версии
 * Node.js - v7.4.0
-* MongoDB - v3.4.1 (whithout SSL)
+* MongoDB - v3.4.1 (whithout SSL).
+
 ## Запуск
+
 Стартуем : `npm start` или `node main.js`.
 
 _P.S. Не забываем про `npm install`._
