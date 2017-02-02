@@ -19,8 +19,7 @@
   "homepage": "https://github.com/dalv96/phiz-tech#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
-    "connect-mongodb": "^1.1.5",
-    "cookie-session": "^2.0.0-alpha.2",
+    "connect-mongo": "^1.3.2",
     "express": "^4.14.1",
     "express-session": "^1.15.0",
     "mongodb": "^2.2.22",

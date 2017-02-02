@@ -4,4 +4,7 @@ append head
     //- Заменяем title или добавляем скрипты и css тут. В basic.pug только те
     //- скрипты и css, которые используются на всех страницах
 append content
-    h1 Hello bitches!
+    if(user)
+        h1 Hello #{user.username}!
+    else
+        h1 Hello guest!
