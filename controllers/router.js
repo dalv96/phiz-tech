@@ -19,4 +19,9 @@ module.exports = function (app) {
 
     app.post('/login', Authorization.checkAuthorisation);
 
+    app.all('/editor/*', Authorization.isEditor); // Проверка роли редактора
+
+    app.get('/editor/addNews', function (req, res) {
+        res.render('addNews');
+    });
 }

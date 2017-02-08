@@ -4,7 +4,7 @@ html
         block title
             title Физико-Технический Институт
         block head
-            link(rel='stylesheet' href='css/bootstrap.css')
+            link(rel='stylesheet' href='/css/bootstrap.css')
     body
         header
             block header
@@ -15,5 +15,9 @@ html
                 label Список страниц для тестов и разработки :
                 ul
                     li
+                        a(href='/') Главная страница
+                    li
                         a(href='/login') Тестовая страница входа
+                    li
+                        a(href='/editor/addNews') Добавление новости
         footer

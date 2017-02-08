@@ -32,6 +32,10 @@ module.exports = {
                 res.status(200).redirect('/');
             }
         });
+    },
+
+    isEditor : function (req, res, next) { // Заглушка
+        next();
     }
 
 }

@@ -1,0 +1,16 @@
+extend basic
+
+block append head
+    title Добавление новости
+block append content
+    h1 Добавление новости
+    form(method='POST')
+        label Заголовок :
+        input(type='text')
+        br
+        label Описание :
+        textarea
+        br
+        label Картинка :
+        input(type='file')
+        button(type='submit') Добавить
