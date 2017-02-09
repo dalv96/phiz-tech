@@ -4,13 +4,13 @@ block append head
     title Добавление новости
 block append content
     h1 Добавление новости
-    form(method='POST')
+    form(method='POST' enctype="multipart/form-data")
         label Заголовок :
-        input(type='text')
+        input(type='text' name='title')
         br
         label Описание :
-        textarea
+        textarea(name='desc')
         br
         label Картинка :
-        input(type='file')
+        input(id="files-field" name="avatar" type="file" multiple="multiple")
         button(type='submit') Добавить

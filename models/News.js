@@ -4,17 +4,17 @@ var mongoose = require('../controllers/connect');
 
 var News = mongoose.Schema({
     title: {
-        type: "String",
+        type: String,
         required : true,
 		unique : false,
     },
     description: {
-        type: "String",
+        type: String,
         required : true,
         unique : false,
     },
     image: {
-        type: "String",
+        type: String,
         required : false,
         unique : false,
     }
@@ -22,4 +22,4 @@ var News = mongoose.Schema({
 
 var news =  mongoose.model('News', News);
 
-module.exports = account;
+module.exports = news;

@@ -18,6 +18,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 app.disable('x-powered-by');
+app.use(require('helmet')());
 
 app.use(session({
 	resave:false,
