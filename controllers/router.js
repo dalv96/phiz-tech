@@ -20,6 +20,21 @@ module.exports = function (app) {
 
     app.post('/login', Authorization.checkAuthorisation);
 
+    app.get('/key', Authorization.getRandomKey);
+
+    app.all('/admin/*', Authorization.isAdmin); // Проверка роли редактора
+
+    app.get('/admin/users', function (req, res) {
+        res.render('admin/users');
+    });
+
+    app.get('/admin/editUser', function (req, res) {
+        res.render('admin/editUser');
+    });
+
+    app.get('/admin/createUser', function (req, res) {
+        res.render('admin/createUser');
+    });
 
     app.all('/editor/*', Authorization.isEditor); // Проверка роли редактора
 

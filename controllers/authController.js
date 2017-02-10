@@ -2,7 +2,7 @@
 
 var models = require('../models');
 var Account = models.Account;
-
+var bcrypt = require('bcryptjs');
 
 module.exports = {
 
@@ -36,6 +36,15 @@ module.exports = {
 
     isEditor : function (req, res, next) { // Заглушка
         next();
+    },
+
+    isAdmin : function (req, res, next) { // Заглушка
+        next();
+    },
+
+    getRandomKey : function (req, res) {
+        var sault = bcrypt.genSaltSync(10);
+        res.send(sault).status(200);
     }
 
 }
