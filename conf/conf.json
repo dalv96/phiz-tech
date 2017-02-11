@@ -6,6 +6,9 @@
         "port" : 21017,
         "url" : "localhost",
         "name" : "test"
+    },
+    "file" : {
+        "path" : "./uploads"
     }
 
 }
