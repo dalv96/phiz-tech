@@ -13,7 +13,7 @@ var Calendar = mongoose.Schema({
     }
 });
 
-var calendar =  mongoose.model('Calendar', Calendar);
+var calendar = mongoose.model('Calendar', Calendar);
 
 
 module.exports = calendar;

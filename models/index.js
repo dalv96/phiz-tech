@@ -1,7 +1,7 @@
 'use strict';
 
-var models = ['Account'];
+var models = ['Account', 'Calendar', 'Gallery', 'News'];
 
-models.forEach( model => {
-	module.exports[model] = require( './'+model );
+models.forEach(model => {
+    module.exports[model] = require('./' + model);
 });

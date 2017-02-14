@@ -6,8 +6,8 @@ var bcrypt = require('bcryptjs');
 
 module.exports = {
 
-    isLoggedIn : function (req, res, next) {
-        if(req.session.user) {
+    isLoggedIn: function(req, res, next) {
+        if (req.session.user) {
             Account.find({username: req.session.user}).then( a => {
                 if(a.length != 0) {
                     a[0].password = '****'
@@ -18,14 +18,14 @@ module.exports = {
         } else next();
     },
 
-    loggout : function (req, res) {
+    loggout: function(req, res) {
         req.session.destroy();
         res.redirect('/');
     },
 
-    checkAuthorisation : function (req, res) {
+    checkAuthorisation: function (req, res) {
         Account.find({username: req.body.login}).then( a => {
-            if((a.length != 0) && (a[0].password == req.body.password)) {
+            if ((a.length != 0) && (a[0].password == req.body.password)) {
                 req.session.user = a[0].username;
                 res.status(200).redirect('/');
             } else {
@@ -34,17 +34,11 @@ module.exports = {
         });
     },
 
-    isEditor : function (req, res, next) { // Заглушка
+    isEditor: function(req, res, next) { // Заглушка
         next();
     },
 
-    isAdmin : function (req, res, next) { // Заглушка
+    isAdmin: function(req, res, next) { // Заглушка
         next();
-    },
-
-    getRandomKey : function (req, res) {
-        var sault = bcrypt.genSaltSync(10);
-        res.send(sault).status(200);
     }
-
 }

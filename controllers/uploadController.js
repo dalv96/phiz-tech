@@ -1,17 +1,18 @@
 'use strict'
 
+var multer = require('multer');
+var conf = require('../conf');
 
-var multer  = require('multer');
-var conf    = require('../conf');
-
-module.exports.init =  function () {
+module.exports.init = function() {
     var storage = multer.diskStorage({
-        destination: function (req, file, cb) {
+        destination: function(req, file, cb) {
             cb(null, conf.get('file:path'))
         },
-        filename: function (req, file, cb) {
-            cb(null,  Date.now() + '-' + file.originalname)
+        filename: function(req, file, cb) {
+            cb(null, Date.now() + '-' + file.originalname)
         }
     })
-    return multer({ storage: storage });
+    return multer({
+        storage: storage
+    });
 }

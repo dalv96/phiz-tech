@@ -1,14 +1,14 @@
 {
-    "server" : {
-        "port" : 2017
+    "server": {
+        "port": 2017
     },
-    "database" : {
-        "port" : 21017,
-        "url" : "localhost",
-        "name" : "test"
+    "database": {
+        "port": 21017,
+        "url": "localhost",
+        "name": "test"
     },
-    "file" : {
-        "path" : "./uploads"
+    "file": {
+        "path": "./uploads"
     }
 
 }

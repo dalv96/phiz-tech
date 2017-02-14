@@ -12,7 +12,7 @@ var Gallery = mongoose.Schema({
     }
 });
 
-var gallery =  mongoose.model('Gallery', Gallery);
+var gallery = mongoose.model('Gallery', Gallery);
 
 
 module.exports = gallery;
