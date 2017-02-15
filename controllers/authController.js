@@ -2,11 +2,15 @@
 
 var models = require('../models');
 var Account = models.Account;
-var bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+const secret = 'abcdeeqw23fg';
 
 module.exports = {
 
     isLoggedIn: function(req, res, next) {
+        // const hash = crypto.createHmac('sha256', secret)
+        //                    .update('New')
+        //                    .digest('hex');
         if (req.session.user) {
             Account.find({username: req.session.user}).then( a => {
                 if(a.length != 0) {
@@ -40,5 +44,9 @@ module.exports = {
 
     isAdmin: function(req, res, next) { // Заглушка
         next();
+    },
+
+    some: function () {
+
     }
 }
