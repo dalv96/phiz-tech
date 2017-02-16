@@ -12,7 +12,16 @@ var Gallery = mongoose.Schema({
     }
 });
 
-var gallery = mongoose.model('Gallery', Gallery);
+var gallery = mongoose.model('Album', Gallery);
 
+gallery.find().then(a => {
+    if (a.length == 0) {
+        var album = new gallery({
+            title: 'Untiled'
+        });
+        album.save();
+        console.log('Created default album.');
+    }
+});
 
 module.exports = gallery;

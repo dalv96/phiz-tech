@@ -2,11 +2,14 @@
 
 var multer = require('multer');
 var conf = require('../conf');
+const mkdirp = require('mkdirp-promise');
 
 module.exports.init = function() {
     var storage = multer.diskStorage({
         destination: function(req, file, cb) {
-            cb(null, conf.get('file:path'))
+            mkdirp(conf.get('file:path')).then( () => {
+                cb(null, conf.get('file:path'));
+            })
         },
         filename: function(req, file, cb) {
             cb(null, Date.now() + '-' + file.originalname)

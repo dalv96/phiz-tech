@@ -1,5 +1,6 @@
 #File storage
 uploads
+public/photos
 
 # Logs
 logs

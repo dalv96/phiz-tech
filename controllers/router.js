@@ -2,6 +2,7 @@
 
 // var conf = require('../conf');
 var Authorization = require('./authController');
+var Gallery = require('./galleryController');
 var upload = require('./uploadController').init();
 
 module.exports = function(app) {
@@ -20,7 +21,9 @@ module.exports = function(app) {
 
     app.post('/login', Authorization.checkAuthorisation);
 
-    app.all('/admin/*', Authorization.isAdmin); // Проверка роли редактора
+    app.get('/gallery', Gallery.getPhotos);
+
+    app.all('/admin/*', Authorization.isAdmin); // Проверка роли админа
 
     app.get('/admin/users', function(req, res) {
         res.render('admin/users');
@@ -36,8 +39,14 @@ module.exports = function(app) {
 
     app.all('/editor/*', Authorization.isEditor); // Проверка роли редактора
 
+    app.get('/editor/addPhotos', function(req, res) {
+        res.render('editor/addPhotos');
+    });
+
+    app.post('/editor/addPhotos', upload.any(), Gallery.addPhotos);
+
     app.get('/editor/addNews', function(req, res) {
-        res.render('addNews');
+        res.render('editor/addNews');
     });
 
     app.post('/editor/addNews', upload.any(), function(req, res) {

@@ -1,0 +1,10 @@
+extend ../basic
+
+block append head
+    title Добавление фото
+block append content
+    h1 Добавление новости
+    form(method='POST' enctype="multipart/form-data")
+        label Картинка :
+        input(id="files-field" name="avatar" type="file" multiple="multiple")
+        button(type='submit') Добавить
