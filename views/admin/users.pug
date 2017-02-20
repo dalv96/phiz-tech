@@ -1,1 +1,21 @@
-h1 Список пользователей
+extend ../basic
+
+append content
+
+	h1 Список пользователей
+	.table-responsive.container-fluid
+		table.table.table-hover
+			thead
+				tr
+					th Логин
+					th E-mail
+					th Ф.И.О.
+					th Телефон
+					th Права
+			tbody
+				tr
+					td admin
+					td admin@phys-tech.ru
+					td А. Н. Оним
+					td +7 978 355 35 35
+					td Администратор
