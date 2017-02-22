@@ -33,7 +33,7 @@ module.exports = {
                 req.session.user = a[0].username;
                 res.status(200).redirect('/');
             } else {
-                res.status(200).redirect('/');
+                res.send("error logging");
             }
         });
     },
