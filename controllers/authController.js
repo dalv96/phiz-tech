@@ -9,7 +9,7 @@ module.exports = {
 
     isLoggedIn: function(req, res, next) {
         if (req.session.user) {
-            Account.find({username: req.session.user}).then( a => {
+            Account.find({login: req.session.user}).then( a => {
                 if(a.length != 0) {
                     a[0].password = '****';
                     res.locals.user = a[0];
@@ -25,12 +25,13 @@ module.exports = {
     },
 
     checkAuthorisation: function (req, res) {
-        Account.find({username: req.body.login}).then( a => {
+        Account.find({login: req.body.login}).then( a => {
             const hash = crypto.createHmac('sha256', secret)
                                .update(req.body.password)
                                .digest('hex');
+           console.log(hash + '\n' + a[0].password);
             if ((a.length != 0) && (a[0].password == hash)) {
-                req.session.user = a[0].username;
+                req.session.user = a[0].login;
                 res.redirect('/');
             } else {
                 res.send("error logging");
