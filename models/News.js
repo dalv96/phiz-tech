@@ -2,6 +2,8 @@
 
 var mongoose = require('../controllers/connect');
 
+var Schema = mongoose.Schema;
+
 var News = mongoose.Schema({
 
     title: {
