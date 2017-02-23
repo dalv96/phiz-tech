@@ -6,8 +6,8 @@ module.exports = {
 
     getPageAdd: function (req, res) {
         res.render('editor/addPhotos');
-    };
-    
+    },
+
     getPhotos: function (req, res) {
         Gallery.find({title: 'Untiled'}).then(a => {
             if(a.length != 0) {

@@ -2,6 +2,8 @@
 
 // var conf = require('../conf');
 var Authorization = require('./authController');
+var Account = require('./accountController');
+var News = require('./newsController');
 var Gallery = require('./galleryController');
 var upload = require('./uploadController').init();
 
