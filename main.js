@@ -4,11 +4,14 @@ var conf = require('./conf');
 var db = require('./controllers/connect').connections[0];
 var fs = require("fs");
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 var express = require('express');
 var router = require('./controllers/router');
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
