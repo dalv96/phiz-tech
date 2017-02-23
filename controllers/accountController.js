@@ -11,11 +11,20 @@ module.exports = {
     },
 
     getListAccounts: function (req, res) {
-        res.render('admin/users');
+        Account.find().then(a => {
+            res.render('admin/users', {users: a});
+        }).catch(error => {
+            console.error(error);
+        });
     },
 
     getOneAccount: function (req, res) {
-        res.render('admin/editUser');
+        Account.find({ login: req.params.login }).then(a => {
+            if(a.length != 0)
+                res.render('admin/editUser', {user: a[0]});
+            else
+                res.status(404).send('Этого пользователя не существует!!!');
+        })
     },
 
     createAccount: function (req, res) {

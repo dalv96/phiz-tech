@@ -13,9 +13,11 @@ append content
 					th Телефон
 					th Права
 			tbody
-				tr
-					td admin
-					td admin@phys-tech.ru
-					td А. Н. Оним
-					td +7 978 355 35 35
-					td Администратор
+				each user in users
+					tr
+						td
+							a(href="/admin/users/"+user.login)= user.login
+						td admin@phys-tech.ru
+						td= user.fullName
+						td +7 978 355 35 35
+						td= user.role

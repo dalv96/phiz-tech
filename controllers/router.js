@@ -30,7 +30,7 @@ module.exports = function(app) {
 
     app.get('/admin/users', Account.getListAccounts);
 
-    app.get('/admin/editUser', Account.getOneAccount);
+    app.get('/admin/users/:login', Account.getOneAccount);
 
     app.get('/admin/createUser', Account.getPageCreate);
 
