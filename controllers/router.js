@@ -6,8 +6,11 @@ var Account = require('./accountController');
 var News = require('./newsController');
 var Gallery = require('./galleryController');
 var upload = require('./uploadController').init();
+var models = require('../models');
 
 module.exports = function(app) {
+
+    app.locals.roles = models.Account.roles;
 
     app.get('*', Authorization.isLoggedIn);
 

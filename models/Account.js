@@ -28,6 +28,18 @@ var Account = mongoose.Schema({
 
 });
 
+var roles = [
+    'Администратор',
+    'Редактор'
+].map( (item, i) => {
+    return {
+        name: item,
+        id: i
+    };
+});
+
+Account.statics.roles = roles;
+
 var account = mongoose.model('Account', Account);
 
 account.find().then(a => {

@@ -29,7 +29,6 @@ module.exports = {
             const hash = crypto.createHmac('sha256', secret)
                                .update(req.body.password)
                                .digest('hex');
-           console.log(hash + '\n' + a[0].password);
             if ((a.length != 0) && (a[0].password == hash)) {
                 req.session.user = a[0].login;
                 res.redirect('/');
