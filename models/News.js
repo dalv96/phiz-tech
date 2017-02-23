@@ -3,6 +3,7 @@
 var mongoose = require('../controllers/connect');
 
 var News = mongoose.Schema({
+
     title: {
         type: String,
         required: true,
@@ -17,7 +18,17 @@ var News = mongoose.Schema({
         type: String,
         required: false,
         unique: false,
+    },
+    author: {
+		type: Schema.Types.ObjectId,
+		ref: 'Account',
+		required: true
+	},
+    date: {
+        type: Date,
+        required: true
     }
+
 });
 
 var news = mongoose.model('News', News);
