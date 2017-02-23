@@ -4,6 +4,10 @@ var Gallery = models.Gallery;
 
 module.exports = {
 
+    getPageAdd: function (req, res) {
+        res.render('editor/addPhotos');
+    };
+    
     getPhotos: function (req, res) {
         Gallery.find({title: 'Untiled'}).then(a => {
             if(a.length != 0) {
@@ -19,6 +23,30 @@ module.exports = {
                 a[0].save();
             }
         }).then(() => res.redirect('/gallery'));
+    },
+
+    deletePhoto: function (req, res) {
+
+    },
+
+    moveToAlbum: function (req, res) {
+
+    },
+
+    getListAlbums: function (req, res) {
+
+    },
+
+    getAlbum: function (req, res) {
+
+    },
+
+    addAlbum: function (req, res) {
+
+    },
+
+    deleteAlbum: function (req, res) {
+
     }
 
 }

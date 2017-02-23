@@ -31,7 +31,7 @@ module.exports = {
                                .digest('hex');
             if ((a.length != 0) && (a[0].password == hash)) {
                 req.session.user = a[0].username;
-                res.status(200).redirect('/');
+                res.redirect('/');
             } else {
                 res.send("error logging");
             }

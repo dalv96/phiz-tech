@@ -23,7 +23,7 @@ app.use(require('helmet')());
 
 app.use(session({
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         maxAge: 15 * 60 * 1000 // 15 minutes
     },

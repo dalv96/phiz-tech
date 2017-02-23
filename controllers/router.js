@@ -23,35 +23,24 @@ module.exports = function(app) {
 
     app.get('/gallery', Gallery.getPhotos);
 
-    app.all('/admin/*', Authorization.isAdmin); // Проверка роли админа
+    // ******************* АДМИНИСТРАТОР ************************************
+    app.all('/admin/*', Authorization.isAdmin);
 
-    app.get('/admin/users', function(req, res) {
-        res.render('admin/users');
-    });
+    app.get('/admin/users', Account.getListAccounts);
 
-    app.get('/admin/editUser', function(req, res) {
-        res.render('admin/editUser');
-    });
+    app.get('/admin/editUser', Account.getOneAccount);
 
-    app.get('/admin/createUser', function(req, res) {
-        res.render('admin/createUser');
-    });
+    app.get('/admin/createUser', Account.getPageCreate);
 
-    app.all('/editor/*', Authorization.isEditor); // Проверка роли редактора
+    // ******************* РЕДАКТОР ************************************
+    app.all('/editor/*', Authorization.isEditor);
 
-    app.get('/editor/addPhotos', function(req, res) {
-        res.render('editor/addPhotos');
-    });
+    app.get('/editor/addPhotos', Gallery.getPageAdd);
 
     app.post('/editor/addPhotos', upload.any(), Gallery.addPhotos);
 
-    app.get('/editor/addNews', function(req, res) {
-        res.render('editor/addNews');
-    });
+    app.get('/editor/addNews', News.getPageAdd);
 
-    app.post('/editor/addNews', upload.any(), function(req, res) {
-        console.log(req.files);
-        // req.file is the `avatar` file
-        // req.body will hold the text fields, if there were any
-    })
+    app.post('/editor/addNews', upload.any(), News.addNews);
+
 }
