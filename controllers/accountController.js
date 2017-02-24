@@ -28,23 +28,23 @@ module.exports = {
     },
 
     createAccount: function (req, res) {
-
+        console.log(req.body);
     },
 
     editAccount: function (req, res) {
-
+        console.log(req.body);
     },
 
     editPassword: function (req, res) {
-
+        console.log(req.body.data);
     },
 
     deleteAccount: function (req, res) {
-
+        console.log(req.body);
     },
 
     blockAccount: function (req, res) {
-
+        console.log(req.body);
     }
 
 };

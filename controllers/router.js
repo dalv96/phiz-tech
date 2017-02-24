@@ -7,6 +7,7 @@ var News = require('./newsController');
 var Gallery = require('./galleryController');
 var upload = require('./uploadController').init();
 var models = require('../models');
+var common = require('./common');
 
 module.exports = function(app) {
 
@@ -24,7 +25,7 @@ module.exports = function(app) {
 
     app.get('/logout', Authorization.loggout);
 
-    app.post('/login', Authorization.checkAuthorisation);
+    app.post('/login', common.testData, Authorization.checkAuthorisation);
 
     app.get('/gallery', Gallery.getPhotos);
 
@@ -34,18 +35,25 @@ module.exports = function(app) {
     app.get('/admin/users', Account.getListAccounts);
 
     app.get('/admin/users/:login', Account.getOneAccount);
+    app.post('/admin/users/:login', common.testData, Account.editAccount);
+    app.put('/admin/users/:login/pass', common.testData, Account.editPassword);
+    app.put('/admin/users/:login/block', common.testData, Account.blockAccount);
+    app.delete('/admin/users/:login/delete', common.testData, Account.deleteAccount);
+
 
     app.get('/admin/createUser', Account.getPageCreate);
+    app.post('/admin/createUser', common.testData, Account.createAccount);
+
 
     // ******************* РЕДАКТОР ************************************
     app.all('/editor/*', Authorization.isEditor);
 
     app.get('/editor/addPhotos', Gallery.getPageAdd);
 
-    app.post('/editor/addPhotos', upload.any(), Gallery.addPhotos);
+    app.post('/editor/addPhotos', common.testData, upload.any(), Gallery.addPhotos);
 
     app.get('/editor/addNews', News.getPageAdd);
 
-    app.post('/editor/addNews', upload.any(), News.addNews);
+    app.post('/editor/addNews', common.testData, upload.any(), News.addNews);
 
 }

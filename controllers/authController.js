@@ -25,17 +25,24 @@ module.exports = {
     },
 
     checkAuthorisation: function (req, res) {
-        Account.find({login: req.body.login}).then( a => {
-            const hash = crypto.createHmac('sha256', secret)
-                               .update(req.body.password)
-                               .digest('hex');
-            if ((a.length != 0) && (a[0].password == hash)) {
-                req.session.user = a[0].login;
-                res.redirect('/');
-            } else {
-                res.send("error logging");
-            }
-        });
+
+        if(!req.body.error) {
+            Account.find({login: req.body.login}).then( a => {
+                const hash = crypto.createHmac('sha256', secret)
+                .update(req.body.password)
+                .digest('hex');
+                if ((a.length != 0) && (a[0].password == hash)) {
+                    req.session.user = a[0].login;
+                    res.redirect('/');
+                } else {
+                    res.send("Error logging");
+                }
+            });
+        } else {
+            console.error("Special symbols!");
+            res.send("Error logging");
+        }
+
     },
 
     isEditor: function(req, res, next) { // Заглушка
