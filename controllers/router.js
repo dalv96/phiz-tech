@@ -34,7 +34,7 @@ module.exports = function(app) {
 
     app.get('/admin/users', Account.getListAccounts);
 
-    app.get('/admin/users/:login', Account.getOneAccount);
+    app.get('/admin/users/:login', common.testData, Account.getOneAccount);
     app.post('/admin/users/:login', common.testData, Account.editAccount);
     app.put('/admin/users/:login/pass', common.testData, Account.editPassword);
     app.put('/admin/users/:login/block', common.testData, Account.blockAccount);

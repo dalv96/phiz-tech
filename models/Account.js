@@ -15,7 +15,8 @@ var Account = mongoose.Schema({
     },
     status: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     role: {
         type: Number,

@@ -21,14 +21,6 @@ append content
 				input(type="text" name="fullName" id="fullName" class="input-area form-control" minlength="3" maxlength="50" placeholder="Полное имя" required)
 
 			p
-				label E-mail
-				input(type="email" name="email" id="email" style="text-transform: lowercase;" class="input-area form-control" minlength="5" maxlength="50" placeholder="mail@example.com" required )
-
-			p
-				label Номер телефона
-				input(type="tel" name="phone" id="phone" class="input-area form-control" minlength="5" maxlength="24" placeholder="+7 978 *** ** **" )
-
-			p
 				label Права
 				select(name="role" id="role" class="input-area form-control" required)
 					each role in roles

@@ -2,7 +2,7 @@
 
 var models = require('../models');
 var Account = models.Account;
-
+var password = require('./passwordController');
 
 module.exports = {
 
@@ -19,20 +19,51 @@ module.exports = {
     },
 
     getOneAccount: function (req, res) {
-        Account.find({ login: req.params.login }).then(a => {
-            if(a.length != 0)
-                res.render('admin/editUser', {user: a[0]});
-            else
-                res.status(404).send('Этого пользователя не существует!!!');
-        })
+        if (!req.errorFlag) {
+            Account.find({ login: req.params.login }).then(a => {
+                if(a.length != 0)
+                    res.render('admin/editUser', {user: a[0]});
+                else
+                    res.status(404).send('Этого пользователя не существует!!!');
+            })
+        } else {
+            res.send('error');
+        }
     },
 
     createAccount: function (req, res) {
-        console.log(req.body);
+        if(!req.errorFlag) {
+            Account.find({login: req.body.login}).then(a => {
+                if(a.length == 0) {
+                    var acc = new Account({
+                        login:  req.body.login,
+                        password: password.createHash(req.body.password),
+                        role: req.body.role,
+                        fullName: req.body.fullName
+                    });
+                    return acc.save();
+                } else {
+                    return 'true';
+                }
+            }).then( r => {
+                if(r != 'true') res.redirect('/admin/users')
+                else res.send('Логин занят');
+            })
+        } else {
+            res.send('error');
+        }
     },
 
     editAccount: function (req, res) {
-        console.log(req.body);
+        if(!req.errorFlag) {
+            Account.find({login: req.params.login}).then(a => {
+                a[0].fullName = req.body.fullName;
+                a[0].role = req.body.role;
+                return a[0].save();
+            }).then( () => res.redirect('/admin/users') )
+        } else {
+            res.send('error');
+        }
     },
 
     editPassword: function (req, res) {

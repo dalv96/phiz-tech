@@ -2,8 +2,7 @@
 
 var models = require('../models');
 var Account = models.Account;
-const crypto = require('crypto');
-const secret = 'azccnfjsyeggre62312jfgd';
+var password = require('./passwordController');
 
 module.exports = {
 
@@ -26,12 +25,10 @@ module.exports = {
 
     checkAuthorisation: function (req, res) {
 
-        if(!req.body.error) {
+        if(!req.errorFlag) {
             Account.find({login: req.body.login}).then( a => {
-                const hash = crypto.createHmac('sha256', secret)
-                .update(req.body.password)
-                .digest('hex');
-                if ((a.length != 0) && (a[0].password == hash)) {
+                if ((a.length != 0) &&
+                    (a[0].password == password.createHash(req.body.password))) {
                     req.session.user = a[0].login;
                     res.redirect('/');
                 } else {

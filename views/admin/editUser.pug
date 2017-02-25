@@ -10,14 +10,14 @@ append content
 
 			p
 				label Ф.И.О.
-				input(type="text" name="fullName" id="fullName" class="input-area form-control" value=user.fullName minlength="3" maxlength="50" pattern='^[A-Za-zА-Яа-яЁё]{3,50}+$' placeholder="Полное имя" required)
+				input(type="text" name="fullName" id="fullName" class="input-area form-control" value=user.fullName minlength="3" maxlength="50" placeholder="Полное имя" required)
 
 			p
 				label Права
 				select(name="role" id="role" class="input-area form-control" required)
 					each role in roles
 						if(role.id == user.role)
-							option( checked value=role.id )= role.name
+							option( selected value=role.id )= role.name
 						else
 							option( value=role.id )= role.name
 
