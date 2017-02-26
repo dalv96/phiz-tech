@@ -11,7 +11,7 @@ module.exports = {
     },
 
     getListAccounts: function (req, res) {
-        Account.find().then(a => {
+        Account.find({status: { $gt: -1 }}).then(a => {
             res.render('admin/users', {users: a});
         }).catch(error => {
             console.error(error);
@@ -20,7 +20,7 @@ module.exports = {
 
     getOneAccount: function (req, res) {
         if (!req.errorFlag) {
-            Account.find({ login: req.params.login }).then(a => {
+            Account.find({ login: req.params.login, status: { $gt: -1 }}).then(a => {
                 if(a.length != 0)
                     res.render('admin/editUser', {user: a[0]});
                 else
@@ -56,7 +56,7 @@ module.exports = {
 
     editAccount: function (req, res) {
         if(!req.errorFlag) {
-            Account.find({login: req.params.login}).then(a => {
+            Account.find({login: req.params.login, status: { $gt: -1 }}).then(a => {
                 a[0].fullName = req.body.fullName;
                 a[0].role = req.body.role;
                 return a[0].save();
@@ -71,11 +71,32 @@ module.exports = {
     },
 
     deleteAccount: function (req, res) {
-        console.log(req.body);
+        if(!req.errorFlag && (req.params.login != 'admin'))
+            Account.find({login: req.params.login, status: { $gt: -1 } }).then( a => {
+                if(a.length != 0) {
+                    a[0].login = Date.now() + a[0].login;
+                    a[0].status = -1;
+                    a[0].password = '!deleted!'
+                    return a[0].save();
+                } else console.log('Несущевствующий пользователь!');
+            }).then(() => res.redirect('/admin/users/'));
     },
 
     blockAccount: function (req, res) {
-        console.log(req.body);
+        if(!req.errorFlag && (req.params.login != 'admin'))
+            Account.find({login: req.params.login, status: { $gt: -1 } }).then( a => {
+                if(a.length != 0) {
+                    switch (a[0].status) {
+                        case 0:
+                            a[0].status = 1;
+                            break;
+                        case 1:
+                            a[0].status = 0;
+                            break;
+                    }
+                    return a[0].save();
+                } else console.log('Несущевствующий пользователь!');
+            }).then(() => res.redirect('/admin/users/' + req.params.login));
     }
 
 };
