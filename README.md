@@ -5,7 +5,12 @@
 
 ## Запуск
 
-Стартуем : `npm start` или `node main.js`.
+Для запуска сервера для разработки - `npm run dev`. 
+
+Для запуска в продакшн - `npm run pro`. 
+
+Для остановки в продакшн - `npm run prostop`. 
+
 
 _P.S. Не забываем про `npm install`._
 ## Установка MongoDB для Windows
