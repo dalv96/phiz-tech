@@ -9,7 +9,7 @@ var express = require('express');
 var router = require('./controllers/router');
 var app = express();
 
-app.use('/files', express.static( __dirname + '/public'));
+app.use('/public', express.static( __dirname + '/public'));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use(bodyParser.urlencoded({
