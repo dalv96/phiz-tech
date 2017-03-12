@@ -17,10 +17,10 @@ module.exports = {
     },
 
     addPhotos: function (req, res) {
-        Gallery.find({title: 'Untiled'}).then(a => {
-            if(a.length != 0) {
-                a[0].photos.push(req.files[0].filename);
-                a[0].save();
+        Gallery.findOne({title: 'Untiled'}).then(a => {
+            if(a) {
+                a.photos.push(req.files[0].filename);
+                a.save();
             }
         }).then(() => res.redirect('/gallery'));
     },
