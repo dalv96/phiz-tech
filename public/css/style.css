@@ -1,0 +1,17 @@
+.navbar {
+	border-style: none;
+	height: 140px;
+	background: #fff;
+	font-family: Arial;
+}
+.nav, .navbar-form {
+	margin-top: 55px;
+}
+
+ul li .dropdown {
+	color: #345dac;
+}
+
+.navbar-brand {
+
+}
