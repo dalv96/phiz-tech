@@ -1,17 +1,77 @@
+.logo {
+	display: inline-block;
+	float: left;
+}
+.dropdown-menu {
+	padding: 0px;
+	border: none;
+}
 .navbar {
+	margin-top: 45px;
 	border-style: none;
-	height: 140px;
 	background: #fff;
 	font-family: Arial;
+	display: inline-block;
 }
-.nav, .navbar-form {
-	margin-top: 55px;
+ul li a {
+	color: #254a91;
+}
+ul .dropdown-menu li a{
+	background-color: #345dac;
+	color: #fff;
+	padding: 15px;
+}
+.navbar-my .navbar-nav .dropdown-menu li > a:hover{
+	background-color: #254a91;
+	color: #fff;
+	cursor: pointer;
+}
+.navbar-my li .open > a {
+	background-color: #fff;
+}
+.navbar-my ul li a:hover{
+	background-color: #345dac;
+	color: #fff;
+}
+.navbar-my .navbar-nav > .active > a, .navbar-my .navbar-nav > .active > a:hover, .navbar-my .navbar-nav > .active > a:focus, 
+.navbar-my .navbar-nav > .open > a, .navbar-my .navbar-nav > .open > a:hover, .navbar-my .navbar-nav > .open > a:focus,
+.navbar-my .navbar-nav > li > a:hover, .navbar-my .navbar-nav > li > a:focus
+{
+	color: #fff;
+	background-color: #345dac;
 }
 
-ul li .dropdown {
-	color: #345dac;
+@media (min-width: 768px)
+.latest-news {
+    margin-bottom: 0px;
+    min-height: 450px;
+    background-position: center center;
 }
-
-.navbar-brand {
-
+.latest-news {
+	position: relative;
+	overflow: hidden;
+	background-color: #5780d0;
 }
+.latest-news > img {
+	float: left;
+	opacity: 0.55;
+	width:60%;
+	margin: 0;
+	padding: 0;
+}
+.latest-text {
+	
+	color: #fff;
+	font-family: Arial;
+	padding: 20px 40px;
+	width: 40%;
+	float: left;
+}
+.latest-text h1 {
+	text-transform: uppercase;
+	line-height: 2em;
+}
+.latest-news .latest-text a {
+	color: #fff;
+	font-size: 0.9em;
+};

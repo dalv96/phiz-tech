@@ -11,16 +11,16 @@ html
     body
         header
             block header
+                a.logo(href='/') 
+                        img(src='/public/images/phystechlogo.png' alt='Физико-технический институт')
             block nav
-                nav.navbar.navbar-default(role='navigation')
+                nav.navbar.navbar-my(role='navigation')
                   .navbar-header
                     button.navbar-toggle(type='button', data-target='#navbarCollapse', data-toggle='collapse')
                       span.sr-only Toggle navigation
                       span.icon-bar
                       span.icon-bar
                       span.icon-bar 
-                    a.navbar-brand(href='#') 
-                        img(src='/public/images/phystechlogo.png' alt='Физико-технический институт')
                   #navbarCollapse.collapse.navbar-collapse
                     ul.nav.navbar-nav
                         li.dropdown
@@ -59,30 +59,34 @@ html
                                 a(href='#') 3
                               li
                                 a(href='#') 4
-                    form.navbar-form.navbar-left(role='search')
-                      .form-group.col-md-12
-                        input.form-control(type='text', placeholder='Найти')
-                    ul.nav.navbar-nav.navbar-right
-                      li
-                        a(href='/logout') Выйти
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle='dropdown', href='#') Меню разработчика
+                              b.caret
+                            ul.dropdown-menu(role='menu')
+                              li
+                                a(href='/editor/addNews') Добавление новости
+                              li
+                                a(href='/admin/users') Список пользователей
+                              li
+                                a(href='/admin/createUser') Создание пользователя
+                              li
+                                a(href='/editor/addPhotos') Добавление фото
+                              li
+                                a(href='/editor/addPhotos') Добавление фото
+                        li
+                            form.navbar-form.navbar-right(role='search')
+                              .form-group.col-md-12
+                                input.form-control(type='text', placeholder='Найти')
+                        li 
+                            if (user)
+                                a(href='/logout') Выйти
+                            else
+                                a(href='/login')  Войти 
         div
             block content
-                br
-                label Список страниц для тестов и разработки :
-                ul
-                    li
-                        a(href='/') Главная страница
-                    li
-                        a(href='/login') Тестовая страница входа
-                    li
-                        a(href='/editor/addNews') Добавление новости
-                    li
-                        a(href='/admin/users') Список пользователей
-                    li
-                        a(href='/admin/createUser') Создание пользователя
-                    li
-                        a(href='/editor/addPhotos') Добавление фото
-                    li
-                        a(href='/gallery') Галерея
+                if(user)
+                    span Hello #{user.login}!
+                else
+                    span Hello, guest!   
 
         footer
