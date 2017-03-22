@@ -1,6 +1,12 @@
 .logo {
 	display: inline-block;
 	float: left;
+	margin-left: 8%;
+	margin-right: 2%;
+	margin-top: 5px;
+}
+body {
+margin-top: 1%;	
 }
 .dropdown-menu {
 	padding: 0px;
@@ -48,6 +54,7 @@ ul .dropdown-menu li a{
     background-position: center center;
 }
 .latest-news {
+	margin-top: 25px;
 	position: relative;
 	overflow: hidden;
 	background-color: #5780d0;
