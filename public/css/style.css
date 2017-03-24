@@ -58,11 +58,12 @@ ul .dropdown-menu li a{
 	position: relative;
 	overflow: hidden;
 	background-color: #5780d0;
+
 }
 .latest-news > img {
 	float: left;
 	opacity: 0.55;
-	width:60%;
+	width:50%;
 	margin: 0;
 	padding: 0;
 }
