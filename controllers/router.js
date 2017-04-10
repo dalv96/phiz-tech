@@ -1,4 +1,4 @@
-'use strict'
+﻿'use strict'
 
 // var conf = require('../conf');
 var Authorization = require('./authController');
@@ -21,6 +21,10 @@ module.exports = function(app) {
 
     app.get('/login', function(req, res) {
         res.render('login');
+    });
+
+    app.get('/about', function(req, res) {
+        res.render('about');
     });
 
     app.get('/logout', Authorization.loggout);
