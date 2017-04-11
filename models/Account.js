@@ -31,7 +31,8 @@ var Account = mongoose.Schema({
 
 var roles = [
     'Администратор',
-    'Редактор'
+    'Редактор',
+    'Пользователь'
 ].map( (item, i) => {
     return {
         name: item,
